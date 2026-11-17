@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Prisma Flowers · Girasoles sin polen · Jalisco</title>
-  <meta name="description" content="Girasol sin polen, alhelí y nube recién cortados. Ramos a domicilio y entrega semanal para florerías en Guadalajara. Orgullosamente sembrado en Jalisco.">
+  <title>Prisma Flowers · Flores a domicilio en Guadalajara, directo del campo</title>
+  <meta name="description" content="Girasol sin polen, alhelí, nube y estátice directo de nuestro campo, sin intermediarios. Ramos a domicilio en Guadalajara, Zapopan, Tlaquepaque y Tonalá, y entrega semanal para florerías. Orgullosamente sembrado en Jalisco.">
   <link rel="canonical" href="https://donpistolas.github.io/prismaflowers/">
   <meta name="theme-color" content="#141414">
   <link rel="icon" href="assets/prisma.svg" type="image/svg+xml">
@@ -12,8 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Prisma Flowers">
-  <meta property="og:title" content="Prisma Flowers · Girasoles en su mejor momento">
-  <meta property="og:description" content="Sin polen. Recién cortados. Orgullosamente sembrado en Jalisco.">
+  <meta property="og:title" content="Prisma Flowers · Flores en su mejor momento">
+  <meta property="og:description" content="Directo de nuestro campo a tu puerta. Orgullosamente sembrado en Jalisco.">
   <meta property="og:url" content="https://donpistolas.github.io/prismaflowers/">
   <meta property="og:image" content="https://donpistolas.github.io/prismaflowers/img/og.png">
   <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
     "@type": "Florist",
     "@id": "https://donpistolas.github.io/prismaflowers/#negocio",
     "name": "Prisma Flowers",
-    "description": "Girasol sin polen, alhelí y nube recién cortados. Ramos a domicilio y entrega semanal para florerías. Orgullosamente sembrado en Jalisco.",
+    "description": "Flores directo de nuestro campo, sin intermediarios: girasol sin polen, alhelí, nube y estátice. Ramos a domicilio y entrega semanal para florerías. Orgullosamente sembrado en Jalisco.",
     "url": "https://donpistolas.github.io/prismaflowers/",
     "logo": "https://donpistolas.github.io/prismaflowers/assets/prisma.svg",
     "image": "https://donpistolas.github.io/prismaflowers/img/og.png",
@@ -34,7 +34,7 @@
     "priceRange": "$50 - $470 MXN",
     "currenciesAccepted": "MXN",
     "address": { "@type": "PostalAddress", "addressRegion": "Jalisco", "addressCountry": "MX" },
-    "areaServed": ["Guadalajara", "San Pedro Tlaquepaque", "Tonalá"],
+    "areaServed": ["Guadalajara", "Zapopan", "San Pedro Tlaquepaque", "Tonalá"],
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
@@ -74,11 +74,10 @@
       --muted: #6f6a62;
       --line: rgba(20,20,20,.12);
       --bar: 52px;
-      --tab: 0px;
       --ease: cubic-bezier(.22,.61,.36,1);
     }
     * { box-sizing: border-box; margin: 0; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--bar); }
     body {
       background: var(--cream); color: var(--ink);
       font: 400 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Helvetica Neue", Arial, sans-serif;
@@ -86,12 +85,13 @@
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 
-    /* ---------- Barra ---------- */
+    /* ---------- Barra superior ---------- */
     .bar {
-      position: fixed; inset: 0 0 auto 0; height: var(--bar); z-index: 10;
+      position: fixed; inset: 0 0 auto 0; height: var(--bar); z-index: 20;
       display: flex; align-items: center; justify-content: space-between; padding: 0 22px;
-      background: rgba(246,241,231,.78); -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px);
+      background: rgba(246,241,231,.8); -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px);
       transition: background .5s, color .5s;
     }
     .logo { display: flex; align-items: center; gap: 9px; }
@@ -99,75 +99,67 @@
     .logo span { display: grid; line-height: 1; }
     .logo b { font-weight: 700; font-size: 15px; letter-spacing: .05em; }
     .logo small { font-size: 7.5px; font-weight: 500; letter-spacing: .46em; color: var(--red); margin-top: 3px; }
-    .tabs { display: flex; align-items: center; gap: 34px; font-size: 13px; position: fixed; top: 0; height: var(--bar); left: 50%; transform: translateX(-50%); z-index: 11; transition: color .5s; }
-    .tabs a { opacity: .62; transition: opacity .2s; padding: 6px 0; }
-    .tabs a:hover, .tabs a.on { opacity: 1; }
-    .tabs .m { display: none; }
-    .dark-nav .bar { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; color: #fff; }
-    .dark-nav .tabs { color: #fff; }
-    .dark::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 130px; background: linear-gradient(180deg, rgba(20,20,20,.6), transparent); pointer-events: none; }
-    .dark-nav .logo small { color: #ff6f80; }
+    .bar-right { display: flex; align-items: center; gap: 6px; }
+    .burger { display: none; width: 40px; height: 40px; position: relative; margin-right: -10px; }
+    .burger i { position: absolute; left: 11px; width: 18px; height: 1.5px; background: currentColor; border-radius: 2px; transition: transform .35s var(--ease), top .35s var(--ease); }
+    .burger i:first-child { top: 16px; }
+    .burger i:last-child { top: 23px; }
+    .menu-open .burger i:first-child { top: 19.5px; transform: rotate(45deg); }
+    .menu-open .burger i:last-child { top: 19.5px; transform: rotate(-45deg); }
+
+    .menu { display: flex; align-items: center; gap: 34px; font-size: 13px; position: fixed; top: 0; height: var(--bar); left: 50%; transform: translateX(-50%); z-index: 21; transition: color .5s; }
+    .menu a { opacity: .62; transition: opacity .2s; padding: 6px 0; }
+    .menu a:hover, .menu a.on { opacity: 1; }
+    .menu .m { display: none; }
 
     /* ---------- Botones ---------- */
     .pill {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       background: var(--ink); color: #fff; font-weight: 500; font-size: 16px; line-height: 1;
-      padding: 15px 26px; border-radius: 999px; transition: transform .2s var(--ease), background .2s;
+      padding: 15px 26px; border-radius: 999px; transition: transform .2s var(--ease), background .3s, color .3s;
     }
     .pill:hover { transform: scale(1.03); }
     .pill.red { background: var(--red); }
     .pill.light { background: #fff; color: var(--ink); }
     .pill.sm { padding: 9px 16px; font-size: 13px; }
-    .dark-nav .bar .pill { background: #fff; color: var(--ink); }
     .more { color: var(--red); font-weight: 500; }
     .more::after { content: " ›"; }
     .more:hover { text-decoration: underline; }
     .dark .more { color: #fff; }
 
-    /* ---------- Pantallas ---------- */
-    .panel { position: relative; min-height: 100vh; padding: calc(var(--bar) + 24px) 0 40px; display: flex; overflow: hidden; }
+    /* ---------- Tipografía ---------- */
+    .panel { position: relative; overflow: hidden; }
     .inner { position: relative; z-index: 1; width: 100%; max-width: 1080px; margin: auto; padding: 0 28px; display: flex; flex-direction: column; }
     .dark { background: var(--ink); color: #fff; }
     .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--red); }
     .dark .eyebrow { color: #ff6f80; }
     h1, h2 { font-weight: 600; letter-spacing: -0.035em; line-height: 1.03; }
-    h1 { font-size: clamp(42px, 6.2vw, 88px); }
-    h2 { font-size: clamp(36px, 4.6vw, 64px); }
+    h1 { font-size: clamp(44px, 6.4vw, 92px); }
+    h2 { font-size: clamp(38px, 4.6vw, 64px); }
     .sub { font-size: clamp(18px, 1.7vw, 23px); color: var(--muted); line-height: 1.35; letter-spacing: -0.02em; }
     .dark .sub { color: rgba(255,255,255,.72); }
     .fine { font-size: 13px; color: var(--muted); }
-    .dark .fine { color: rgba(255,255,255,.5); }
+    .dark .fine { color: rgba(255,255,255,.55); }
     .actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
 
-    html.js body { overflow: hidden; }
-    html.js .panel {
-      position: fixed; inset: 0; min-height: 0; height: 100vh; height: 100dvh;
-      padding: calc(var(--bar) + 20px) 0 calc(var(--tab) + 24px);
-      opacity: 0; visibility: hidden; overflow-y: auto;
-      transition: opacity .55s var(--ease), visibility 0s .55s;
-    }
-    html.js .panel.on { opacity: 1; visibility: visible; transition: opacity .55s var(--ease); }
-    html.js:not(.ready) .panel { transition: none; }
-    html.js .rise { opacity: 0; transform: translateY(18px); }
-    html.js .panel.on .rise { opacity: 1; transform: none; transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 90ms + 120ms); }
-
     /* ---------- Inicio ---------- */
-    .home-img { position: absolute; top: 0; right: 0; width: 60%; height: 100%; object-fit: cover; object-position: 50% 50%;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 48%); mask-image: linear-gradient(90deg, transparent 0, #000 48%); }
-    .home .copy { position: relative; max-width: 560px; display: grid; gap: 22px; }
-    .home h1 { margin-top: -4px; }
-    .home .actions { margin-top: 10px; }
+    .home .copy { position: relative; max-width: 580px; display: grid; gap: 22px; }
+    .badge { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; padding: 7px 14px 7px 10px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
+    .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #ff6f80; box-shadow: 0 0 0 4px rgba(255,111,128,.22); }
+    .values { display: flex; gap: 10px 28px; flex-wrap: wrap; list-style: none; padding: 0; font-size: 14px; color: rgba(255,255,255,.78); }
+    .values li { display: flex; align-items: center; gap: 9px; }
+    .values li::before { content: ""; width: 7px; height: 7px; background: var(--red); transform: rotate(45deg); }
 
     /* ---------- Ramos ---------- */
     .head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: clamp(18px, 3vh, 34px); }
-    .head .sub { max-width: 340px; text-align: right; font-size: 17px; }
-    .ramos .inner { height: 100%; }
-    .cards { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .card { background: var(--card); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; min-height: 0; transition: transform .35s var(--ease), box-shadow .35s; }
+    .head .sub { max-width: 360px; text-align: right; font-size: 17px; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .card { background: var(--card); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; transition: transform .35s var(--ease), box-shadow .35s; }
     .card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -28px rgba(20,20,20,.45); }
-    .card .ph { flex: 1; min-height: 110px; overflow: hidden; }
+    .card .ph { overflow: hidden; position: relative; }
     .card img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
     .card:hover img { transform: scale(1.05); }
+    .card .tag { position: absolute; top: 12px; left: 12px; font-size: 11.5px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: rgba(255,253,248,.92); color: var(--ink); }
     .card .txt { padding: 18px 20px 20px; display: grid; gap: 2px; }
     .card h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; }
     .card p { font-size: 14px; color: var(--muted); }
@@ -188,67 +180,103 @@
 
     /* ---------- Eventos ---------- */
     .eventos { background: var(--ink) url("img/campo.jpg") center/cover no-repeat; }
-    .eventos::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,20,.35), rgba(20,20,20,.78)); }
+    .eventos::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,20,.35), rgba(20,20,20,.8)); }
     .eventos .inner { align-items: center; text-align: center; gap: 20px; }
-    .eventos .sub { max-width: 520px; color: rgba(255,255,255,.82); }
+    .eventos .sub { max-width: 540px; color: rgba(255,255,255,.82); }
     .eventos .pill { margin-top: 10px; }
 
     /* ---------- Contacto ---------- */
     .contacto .inner { align-items: center; text-align: center; gap: 22px; }
     .contacto .mark { width: 54px; height: 54px; }
     .contacto .pill { font-size: 18px; padding: 18px 32px; margin-top: 6px; }
-    .facts { display: flex; gap: 14px 44px; flex-wrap: wrap; justify-content: center; margin-top: 18px; font-size: 15px; }
+    .facts { display: flex; gap: 16px 44px; flex-wrap: wrap; justify-content: center; margin-top: 18px; font-size: 15px; }
     .facts div { display: grid; gap: 2px; }
     .facts span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
     .contacto .fine { margin-top: 18px; }
 
-    /* ---------- Celular ---------- */
-    @media (max-width: 820px) {
-      :root { --tab: 58px; }
-      .tabs {
-        position: fixed; inset: auto 0 0 0; transform: none; height: calc(var(--tab) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
-        top: auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; align-items: center; text-align: center; font-size: 11.5px; z-index: 10;
-        background: rgba(246,241,231,.86); -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px);
-        border-top: 1px solid var(--line); transition: background .5s, color .5s;
+    /* ---------- Animación de entrada ---------- */
+    html.js .rise { opacity: 0; transform: translateY(18px); }
+    html.js:not(.panels) .seen .rise,
+    html.panels .panel.on .rise { opacity: 1; transform: none; transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 90ms + 120ms); }
+
+    /* =========================================================
+       COMPUTADORA: una pantalla a la vez, con transición
+       ========================================================= */
+    @media (min-width: 821px) {
+      .panel { min-height: 100vh; display: flex; padding: calc(var(--bar) + 24px) 0 40px; }
+      html.panels, html.panels body { height: 100%; overflow: hidden; }
+      html.panels .panel {
+        position: fixed; inset: 0; min-height: 0; height: 100vh; height: 100dvh;
+        opacity: 0; visibility: hidden; overflow-y: auto;
+        transition: opacity .55s var(--ease), visibility 0s .55s;
       }
-      .tabs .m { display: block; }
-      .tabs a { padding: 14px 0; opacity: .55; }
-      .tabs a.on { opacity: 1; font-weight: 600; }
-      .dark-nav .tabs { background: rgba(20,20,20,.72); border-top-color: rgba(255,255,255,.12); color: #fff; }
+      html.panels .panel.on { opacity: 1; visibility: visible; transition: opacity .55s var(--ease); }
+      html.panels:not(.ready) .panel { transition: none; }
+
+      .dark-nav .bar { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; color: #fff; }
+      .dark-nav .menu { color: #fff; }
+      .dark-nav .bar .pill { background: #fff; color: var(--ink); }
+      .dark-nav .logo small { color: #ff6f80; }
+      .dark::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 130px; background: linear-gradient(180deg, rgba(20,20,20,.6), transparent); pointer-events: none; }
+
+      .home-img { position: absolute; top: 0; right: 0; width: 60%; height: 100%; object-fit: cover;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 48%); mask-image: linear-gradient(90deg, transparent 0, #000 48%); }
+      .ramos .inner { height: 100%; }
+      .cards { flex: 1; min-height: 0; }
+      .card .ph { flex: 1; min-height: 110px; }
+    }
+
+    /* =========================================================
+       CELULAR: scroll natural, menú arriba a la derecha
+       ========================================================= */
+    @media (max-width: 820px) {
       .bar { padding: 0 18px; }
+      .burger { display: block; }
+      .menu {
+        position: fixed; inset: var(--bar) 0 0 0; height: auto; transform: none; left: 0; z-index: 19;
+        flex-direction: column; align-items: stretch; gap: 0; padding: 18px 26px 40px;
+        background: var(--cream); font-size: 30px; font-weight: 600; letter-spacing: -0.03em;
+        opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility 0s .35s;
+      }
+      .menu .m { display: block; }
+      .menu a { opacity: 0; transform: translateY(-8px); padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .menu a.cta { margin-top: 28px; border: 0; padding: 16px; font-size: 17px; font-weight: 500; letter-spacing: 0; text-align: center; border-radius: 999px; background: var(--ink); color: #fff; }
+      .menu-open .menu { opacity: 1; visibility: visible; transition: opacity .35s var(--ease); }
+      .menu-open .menu a { opacity: 1; transform: none; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+      .menu-open .menu a:nth-child(2) { transition-delay: 40ms; } .menu-open .menu a:nth-child(3) { transition-delay: 80ms; }
+      .menu-open .menu a:nth-child(4) { transition-delay: 120ms; } .menu-open .menu a:nth-child(5) { transition-delay: 160ms; }
+      .menu-open .menu a:nth-child(6) { transition-delay: 200ms; }
+      .menu-open { overflow: hidden; }
       .inner { padding: 0 22px; }
 
-      .home-img { width: 100%; height: 56%; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
-      .home .inner { margin-bottom: 0; }
-      .home .copy { gap: 16px; padding-bottom: 8px; }
+      .panel { padding: 72px 0; }
+      .home { padding: var(--bar) 0 56px; }
+      .home-img { width: 100%; height: 64vh; max-height: 560px; object-fit: cover;
+        -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent); mask-image: linear-gradient(180deg, #000 60%, transparent); }
+      .home .copy { margin-top: -70px; gap: 16px; }
+      .home .actions { margin-top: 6px; }
 
-      .head { flex-direction: column; align-items: flex-start; gap: 6px; }
-      .head .sub { text-align: left; font-size: 16px; }
       .ramos .inner { padding: 0; }
-      .ramos .head, .ramos .fine { padding: 0 22px; }
-      .cards { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 22px; scrollbar-width: none; }
+      .head { flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 22px; }
+      .head .sub { text-align: left; font-size: 17px; }
+      .cards { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 22px 8px; scrollbar-width: none; }
       .cards::-webkit-scrollbar { display: none; }
-      .card { flex: 0 0 74%; scroll-snap-align: center; }
+      .card { flex: 0 0 76%; scroll-snap-align: center; }
+      .card .ph { aspect-ratio: 4 / 5; }
+      .ramos .fine { padding: 0 22px; }
 
-      .split { grid-template-columns: 1fr; gap: 22px; }
-      .split .copy { gap: 12px; }
-      .florerias h2 { font-size: 34px; }
-      .florerias .sub { font-size: 17px; }
-      .list b { font-size: 17px; } .list em { font-size: 20px; } .list span { font-size: 13px; }
-      .list li { padding: 8px 0; }
+      .split { grid-template-columns: 1fr; gap: 34px; }
+      .split .copy { gap: 14px; }
+      .list b { font-size: 17px; } .list em { font-size: 21px; } .list span { font-size: 13px; }
 
-      .eventos { background-image: url("img/campo-movil.jpg"); }
-      .facts { gap: 14px 30px; }
-    }
-    @media (max-width: 820px) and (max-height: 720px) {
-      .list span, .florerias .sub { display: none; }
-      .list li { padding: 11px 0; }
-      .home-img { height: 48%; }
-      .home .fine { display: none; }
+      .eventos { padding: 120px 0; background-image: url("img/campo-movil.jpg"); }
+      .contacto { padding: 88px 0 64px; }
+      .facts { flex-direction: column; gap: 16px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      html.js .panel, html.js .panel.on, html.js .panel.on .rise { transition: none; }
+      html { scroll-behavior: auto; }
       html.js .rise { opacity: 1; transform: none; }
+      html.panels .panel, html.panels .panel.on { transition: none; }
     }
   </style>
   <script src="assets/analytics.js" defer></script>
@@ -264,14 +292,18 @@
     <svg><use href="#prisma"/></svg>
     <span><b>PRISMA</b><small>FLOWERS</small></span>
   </a>
-  <a class="pill sm" data-wa="Hola, quiero hacer un pedido." data-track="whatsapp-barra" href="https://wa.me/523320794799">Pedir</a>
+  <div class="bar-right">
+    <a class="pill sm" data-wa="Hola, quiero hacer un pedido." data-track="whatsapp-barra" href="https://wa.me/523320794799">Pedir</a>
+    <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+  </div>
 </header>
-<nav class="tabs" aria-label="Secciones">
+<nav class="menu" id="menu" aria-label="Secciones">
   <a class="m" href="#inicio">Inicio</a>
   <a href="#ramos">Ramos</a>
   <a href="#florerias">Florerías</a>
   <a href="#eventos">Eventos</a>
   <a href="#contacto">Contacto</a>
+  <a class="m cta" data-wa="Hola, quiero hacer un pedido." data-track="whatsapp-menu" href="https://wa.me/523320794799">Pedir por WhatsApp</a>
 </nav>
 
 <main>
@@ -280,14 +312,19 @@
     <img class="home-img" src="img/hero.jpg" alt="Girasol sin polen de Prisma Flowers" width="1500" height="1500">
     <div class="inner">
       <div class="copy">
-        <p class="eyebrow rise">Orgullosamente sembrado en Jalisco</p>
-        <h1 class="rise" style="--i:1">Girasoles en su mejor momento.</h1>
-        <p class="sub rise" style="--i:2">Sin polen. Recién cortados. A tu puerta.</p>
-        <div class="actions rise" style="--i:3">
+        <a class="badge rise" href="#ramos">Preventa 14 de febrero abierta</a>
+        <p class="eyebrow rise" style="--i:1">Orgullosamente sembrado en Jalisco</p>
+        <h1 class="rise" style="--i:2">Flores en su mejor momento.</h1>
+        <p class="sub rise" style="--i:3">Directo de nuestro campo a tu puerta.</p>
+        <div class="actions rise" style="--i:4">
           <a class="pill light" href="#ramos" data-track="inicio-ramos">Ver ramos</a>
           <a class="more" href="#florerias" data-track="inicio-florerias">Para florerías</a>
         </div>
-        <p class="fine rise" style="--i:4">Primer corte: 29 de enero. Preventa abierta.</p>
+        <ul class="values rise" style="--i:5">
+          <li>Sin intermediarios</li>
+          <li>Precio de productor</li>
+          <li>Entrega en Guadalajara</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -296,27 +333,27 @@
     <div class="inner">
       <div class="head">
         <h2 class="rise">Ramos.</h2>
-        <p class="sub rise" style="--i:1">Recién cortados, envueltos en papel kraft.</p>
+        <p class="sub rise" style="--i:1">Armados el día de tu entrega, en papel kraft.</p>
       </div>
       <div class="cards">
         <a class="card rise" style="--i:1" data-wa="Hola, quiero un ramo de 10 girasoles ($250)." data-track="pedido-ramo-10" href="https://wa.me/523320794799">
-          <div class="ph"><img src="img/ramo-10.jpg" alt="Ramo de 10 girasoles sin polen" loading="lazy"></div>
-          <div class="txt"><h3>Diez girasoles</h3><p>El clásico.</p><div class="row"><span class="price">$250</span><span class="more">Pedir</span></div></div>
+          <div class="ph"><span class="tag">El clásico</span><img src="img/ramo-10.jpg" alt="Ramo de 10 girasoles sin polen" loading="lazy"></div>
+          <div class="txt"><h3>Diez girasoles</h3><p>Girasol sin polen.</p><div class="row"><span class="price">$250</span><span class="more">Pedir</span></div></div>
         </a>
-        <a class="card rise" style="--i:2" data-wa="Hola, quiero un ramo de 5 girasoles ($150)." data-track="pedido-ramo-5" href="https://wa.me/523320794799">
-          <div class="ph"><img src="img/ramo-5.jpg" alt="Ramo de 5 girasoles sin polen" loading="lazy"></div>
-          <div class="txt"><h3>Cinco girasoles</h3><p>El detalle.</p><div class="row"><span class="price">$150</span><span class="more">Pedir</span></div></div>
-        </a>
-        <a class="card rise" style="--i:3" data-wa="Hola, quiero un ramo mixto ($220)." data-track="pedido-ramo-mixto" href="https://wa.me/523320794799">
+        <a class="card rise" style="--i:2" data-wa="Hola, quiero un ramo mixto ($220)." data-track="pedido-ramo-mixto" href="https://wa.me/523320794799">
           <div class="ph"><img src="img/ramo-mixto.jpg" alt="Ramo mixto de girasol, alhelí y nube" loading="lazy"></div>
           <div class="txt"><h3>Mixto</h3><p>Girasol, alhelí y nube.</p><div class="row"><span class="price">$220</span><span class="more">Pedir</span></div></div>
         </a>
+        <a class="card rise" style="--i:3" data-wa="Hola, quiero un ramo de 5 girasoles ($150)." data-track="pedido-ramo-5" href="https://wa.me/523320794799">
+          <div class="ph"><img src="img/ramo-5.jpg" alt="Ramo de 5 girasoles sin polen" loading="lazy"></div>
+          <div class="txt"><h3>Cinco girasoles</h3><p>Un detalle.</p><div class="row"><span class="price">$150</span><span class="more">Pedir</span></div></div>
+        </a>
         <a class="card rise" style="--i:4" data-wa="Hola, quiero la suscripción semanal ($180 por semana)." data-track="pedido-suscripcion" href="https://wa.me/523320794799">
           <div class="ph"><img src="img/suscripcion.jpg" alt="Suscripción semanal de flores" loading="lazy"></div>
-          <div class="txt"><h3>Suscripción</h3><p>Un ramo nuevo cada semana.</p><div class="row"><span class="price">$180 <small>/ semana</small></span><span class="more">Pedir</span></div></div>
+          <div class="txt"><h3>Suscripción</h3><p>Flores nuevas cada semana.</p><div class="row"><span class="price">$180 <small>/ semana</small></span><span class="more">Pedir</span></div></div>
         </a>
       </div>
-      <p class="fine rise" style="--i:5">Envío $50 · Gratis desde $500</p>
+      <p class="fine rise" style="--i:5">Envío $50 · Gratis desde $500 · Entregas jueves y viernes</p>
     </div>
   </section>
 
@@ -326,7 +363,7 @@
         <div class="copy">
           <p class="eyebrow rise">Para florerías</p>
           <h2 class="rise" style="--i:1">La misma flor. Cada semana.</h2>
-          <p class="sub rise" style="--i:2">Cortada el día que la recibes. Entrega incluida.</p>
+          <p class="sub rise" style="--i:2">Precio de productor, cortada para tu entrega. Envío incluido.</p>
           <a class="pill red rise" style="--i:3" data-wa="Hola, tengo una florería y quiero hacer un pedido." data-track="pedido-floreria" href="https://wa.me/523320794799">Hacer pedido</a>
         </div>
         <div class="rise" style="--i:2">
@@ -361,7 +398,7 @@
       <div class="facts rise" style="--i:4">
         <div><span>Instagram</span><a href="https://www.instagram.com/prismaflowers/" target="_blank" rel="noopener" data-track="instagram">@prismaflowers</a></div>
         <div><span>Horario</span>Lunes a sábado, 8 a 18 h</div>
-        <div><span>Entregas</span>Guadalajara, Tlaquepaque y Tonalá</div>
+        <div><span>Entregas</span>Guadalajara, Zapopan, Tlaquepaque y Tonalá</div>
       </div>
       <p class="fine rise" style="--i:5">© 2026 Prisma Flowers · Orgullosamente sembrado en Jalisco</p>
     </div>
@@ -371,6 +408,7 @@
 
 <script>
   var WHATSAPP = "523320794799";
+  var root = document.documentElement;
 
   document.querySelectorAll("[data-wa]").forEach(function (a) {
     a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(a.getAttribute("data-wa"));
@@ -378,39 +416,72 @@
     a.rel = "noopener";
   });
 
-  /* Pantallas: una a la vez, sin deslizar. Se cambia con el menú, las flechas o la rueda. */
+  /* ---------- Menú de celular ---------- */
+  var burger = document.querySelector(".burger");
+  function closeMenu() { root.classList.remove("menu-open"); burger.setAttribute("aria-expanded", "false"); burger.setAttribute("aria-label", "Abrir menú"); }
+  burger.addEventListener("click", function () {
+    var open = root.classList.toggle("menu-open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+  document.querySelectorAll(".menu a, .logo").forEach(function (a) { a.addEventListener("click", closeMenu); });
+  window.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+
+  /* ---------- Celular: aparecen al hacer scroll ---------- */
   var panels = [].slice.call(document.querySelectorAll(".panel"));
-  var tabs = [].slice.call(document.querySelectorAll(".tabs a"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("seen"); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    panels.forEach(function (p) { io.observe(p); });
+  } else {
+    panels.forEach(function (p) { p.classList.add("seen"); });
+  }
+
+  /* ---------- Computadora: una pantalla a la vez ---------- */
+  var desk = window.matchMedia("(min-width: 821px)");
+  var links = [].slice.call(document.querySelectorAll(".menu a"));
   var current = 0, locked = false;
 
   function show(i) {
-    if (i < 0 || i >= panels.length) return;
     current = i;
     panels.forEach(function (p, n) { p.classList.toggle("on", n === i); });
-    var id = panels[i].id;
-    tabs.forEach(function (t) { t.classList.toggle("on", t.getAttribute("href") === "#" + id); });
+    links.forEach(function (t) { t.classList.toggle("on", t.getAttribute("href") === "#" + panels[i].id); });
     document.body.classList.toggle("dark-nav", panels[i].hasAttribute("data-dark"));
     panels[i].scrollTop = 0;
   }
-  function fromHash() {
+  function indexFromHash() {
     var i = panels.findIndex(function (p) { return "#" + p.id === location.hash; });
-    show(i < 0 ? 0 : i);
+    return i < 0 ? 0 : i;
   }
   function go(i) {
     if (i < 0 || i >= panels.length || i === current) return;
     history.pushState(null, "", "#" + panels[i].id);
     show(i);
   }
-  window.addEventListener("hashchange", fromHash);
-  window.addEventListener("popstate", fromHash);
-  fromHash();
-  requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.add("ready"); }); });
+  function setMode() {
+    if (desk.matches) {
+      root.classList.add("panels");
+      closeMenu();
+      show(indexFromHash());
+      requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add("ready"); }); });
+    } else {
+      root.classList.remove("panels", "ready");
+      document.body.classList.remove("dark-nav");
+    }
+  }
+  if (desk.addEventListener) desk.addEventListener("change", setMode); else desk.addListener(setMode);
+  setMode();
 
+  window.addEventListener("hashchange", function () { if (desk.matches) show(indexFromHash()); });
+  window.addEventListener("popstate", function () { if (desk.matches) show(indexFromHash()); });
   window.addEventListener("keydown", function (e) {
+    if (!desk.matches) return;
     if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown") go(current + 1);
     if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") go(current - 1);
   });
   window.addEventListener("wheel", function (e) {
+    if (!desk.matches) return;
     var p = panels[current];
     if (locked || p.scrollHeight > p.clientHeight + 2) return;
     var d = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
