@@ -26,6 +26,7 @@
     "@type": "Florist",
     "@id": "https://donpistolas.github.io/prismaflowers/#negocio",
     "name": "Prisma Flowers",
+    "alternateName": "Prisma Flowers · Rancho El Diamante",
     "description": "Flor de corte cultivada en Tonalá, Jalisco. Girasol sin polen, alhelí y nube, cortados el mismo día. Mayoreo para florerías y ramos al público.",
     "url": "https://donpistolas.github.io/prismaflowers/",
     "logo": "https://donpistolas.github.io/prismaflowers/assets/prisma.svg",
@@ -50,7 +51,11 @@
         { "@type": "Offer", "price": "220", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Ramo mixto (girasol y nube)" } },
         { "@type": "Offer", "price": "100", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Paquete de 10 girasoles para florería, entrega semanal" } },
         { "@type": "Offer", "price": "60", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Manojo de alhelí para florería" } },
-        { "@type": "Offer", "price": "50", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Manojo de nube (gypsophila) para florería" } }
+        { "@type": "Offer", "price": "50", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Manojo de nube (gypsophila) para florería" } },
+        { "@type": "Offer", "price": "50", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Manojo de estátice para florería" } },
+        { "@type": "Offer", "price": "470", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Caja mixta para florería: 30 girasoles, 2 alhelí y 2 nube" } },
+        { "@type": "Offer", "price": "180", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Suscripción semanal: un ramo mixto cada semana" } },
+        { "@type": "Offer", "price": "12", "priceCurrency": "MXN", "itemOffered": { "@type": "Product", "name": "Girasol por vara para eventos (mínimo 100 varas)" } }
       ]
     }
   }
@@ -69,7 +74,9 @@
       { "@type": "Question", "name": "Tengo una florería, ¿puedo probar la flor antes de comprar?",
         "acceptedAnswer": { "@type": "Answer", "text": "Sí. Te llevamos sin costo una muestra de un paquete de 10 girasoles. Pídela por WhatsApp con tu dirección y el día que prefieras." } },
       { "@type": "Question", "name": "¿Cuál es el pedido mínimo de mayoreo?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El pedido mínimo de mayoreo es de 3 paquetes." } },
+        "acceptedAnswer": { "@type": "Answer", "text": "Girasol: 3 paquetes de 10. Alhelí, nube y estátice: 2 manojos. Para eventos: 100 varas con 3 semanas de aviso." } },
+      { "@type": "Question", "name": "¿Venden flor para bodas, XV años y eventos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Girasol a $12 la vara, mínimo 100 varas, con 3 semanas de aviso para apartar el corte." } },
       { "@type": "Question", "name": "¿Cómo hago que mis flores duren más?",
         "acceptedAnswer": { "@type": "Answer", "text": "Corta 2 cm del tallo en diagonal al recibirlas y cambia el agua cada 2 días." } }
     ]
@@ -151,6 +158,11 @@
     .hero .wrap { min-height: min(88vh, 760px); display: flex; flex-direction: column; justify-content: flex-end; padding-top: 120px; padding-bottom: 72px; }
     .badge { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); backdrop-filter: blur(6px); padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-bottom: 22px; }
     .badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(242,177,0,.3); }
+    @media (max-width: 720px) {
+      .hero { background:
+        linear-gradient(180deg, rgba(10,8,6,.1) 0%, rgba(10,8,6,.7) 65%),
+        url("img/campo-movil.jpg") center/cover no-repeat, #2b3d1f; }
+    }
     .hero h1 { font-size: clamp(46px, 8.6vw, 104px); line-height: .98; letter-spacing: -2px; max-width: 900px; }
     .hero p { font-size: clamp(18px, 2.1vw, 21px); max-width: 600px; margin: 22px 0 32px; color: rgba(255,255,255,.9); }
     .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -217,13 +229,30 @@
     .ph.sub { background: repeating-linear-gradient(90deg, #e9d9b8 0 24%, #f2b100 24% 25%), #e9d9b8; }
 
     /* Temporada */
-    .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 44px; position: relative; }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 44px; position: relative; }
     .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: var(--line); }
     .step { position: relative; padding-right: 24px; }
     .step::before { content: ""; display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--paper); border: 3px solid var(--red); margin-bottom: 18px; position: relative; }
     .step .date { font: 600 13px/1 Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); }
     .step h3 { margin: 8px 0 6px; }
     .step p { color: var(--muted); margin: 0; font-size: 15px; }
+
+    /* Formulario florerías → WhatsApp */
+    .lead-form { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 12px; }
+    .lead-form h3 { font-size: 20px; }
+    .lead-form label { font-size: 13px; font-weight: 600; color: var(--ink-2); display: grid; gap: 6px; }
+    .lead-form input, .lead-form select { font: 400 16px Inter, sans-serif; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); width: 100%; }
+    .lead-form input:focus, .lead-form select:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+    .lead-form .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .lead-form small { color: var(--muted); font-size: 13px; }
+
+    /* Eventos */
+    .eventos { background: var(--paper-2); padding: 0 0 88px; }
+    .eventos .box { border: 2px solid var(--ink); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: center; background: var(--paper); }
+    .eventos .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+    .eventos .facts div { background: var(--paper-2); border-radius: 10px; padding: 14px; }
+    .eventos .facts b { display: block; font: 700 22px/1.1 Fraunces, Georgia, serif; }
+    .eventos .facts span { font-size: 13px; color: var(--muted); }
 
     /* El campo */
     .campo { background: var(--ink); color: #fff; }
@@ -275,7 +304,10 @@
       h2 br { display: none; }
       .top nav { display: none; }
       .trust ul { grid-template-columns: 1fr; gap: 14px; }
-      .timeline { grid-template-columns: 1fr; gap: 28px; }
+      .timeline { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .eventos { padding-bottom: 64px; }
+      .eventos .box { grid-template-columns: 1fr; padding: 24px; }
+      .lead-form .two { grid-template-columns: 1fr; }
       .timeline::before { display: none; }
       .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; }
       .gallery .ph:first-child { grid-column: span 2; grid-row: auto; }
@@ -288,6 +320,7 @@
       .cards { grid-template-columns: 1fr; }
       .card .ph { aspect-ratio: 16/10; }
       .schedule { grid-template-columns: 1fr; }
+      .eventos .facts { grid-template-columns: 1fr; }
     }
   </style>
   <script src="assets/analytics.js" defer></script>
@@ -308,6 +341,7 @@
     <nav aria-label="Secciones">
       <a href="#florerias">Para florerías</a>
       <a href="#ramos">Ramos</a>
+      <a href="#eventos">Eventos</a>
       <a href="#temporada">Temporada</a>
       <a href="#campo">El campo</a>
       <a href="#contacto">Contacto</a>
@@ -346,7 +380,7 @@
   <section class="b2b" id="florerias">
     <div class="wrap">
       <div class="kicker">Para florerías</div>
-      <h2>Flor local, fresca y puntual<br>para tu florería.</h2>
+      <h2>Flor local, fresca y puntual <br>para tu florería.</h2>
       <p class="intro">Te entregamos cada semana la misma cantidad, cortada el día de la entrega. Pruébala antes: te llevamos una muestra sin costo.</p>
 
       <div class="b2b-grid">
@@ -357,9 +391,28 @@
             <li><b>Volumen apartado</b><span>Tu cantidad semanal queda reservada antes que el público.</span></li>
             <li><b>Muestra sin costo</b><span>Un paquete de 10 girasoles para que la compares con tu proveedor actual.</span></li>
           </ul>
-          <a class="btn btn-red" data-wa="Hola, tengo una florería y me interesa una muestra sin costo de girasol. Mi florería se llama ____ y está en ____." data-track="muestra-florerias" href="#contacto">
-            Pedir muestra sin costo
-          </a>
+          <form class="lead-form" id="form-floreria">
+            <h3>Pide tu muestra sin costo</h3>
+            <div class="two">
+              <label>Nombre de tu florería<input name="negocio" required autocomplete="organization"></label>
+              <label>Tu nombre<input name="nombre" required autocomplete="name"></label>
+            </div>
+            <div class="two">
+              <label>Zona o colonia<input name="zona" required placeholder="Ej. Tonalá centro"></label>
+              <label>Te interesa
+                <select name="interes">
+                  <option>Muestra sin costo</option>
+                  <option>Pedido fijo semanal</option>
+                  <option>Caja mixta ($470)</option>
+                  <option>Mayoreo en campo</option>
+                  <option>Pedido para el 14 de febrero</option>
+                </select>
+              </label>
+            </div>
+            <label>¿Cuántos paquetes de girasol vendes a la semana?<input name="cantidad" inputmode="numeric" placeholder="Aproximado"></label>
+            <button class="btn btn-red" type="submit" data-track="muestra-florerias">Enviar por WhatsApp</button>
+            <small>Se abre WhatsApp con tu mensaje listo. Esta página no guarda tus datos.</small>
+          </form>
         </div>
 
         <div>
@@ -370,11 +423,13 @@
               </thead>
               <tbody>
                 <tr><td><b>Girasol sin polen</b><small>paquete de 10</small></td><td class="num hl">$100</td><td class="num">$80</td></tr>
-                <tr><td><b>Alhelí</b><small>manojo · desde marzo</small></td><td class="num hl">$60</td><td class="num">$50</td></tr>
-                <tr><td><b>Nube</b><small>manojo · desde febrero</small></td><td class="num hl">$50</td><td class="num">$40</td></tr>
+                <tr><td><b>Alhelí</b><small>manojo de 12 varas · desde marzo</small></td><td class="num hl">$60</td><td class="num">$50</td></tr>
+                <tr><td><b>Nube blanca</b><small>manojo · desde febrero</small></td><td class="num hl">$50</td><td class="num">$40</td></tr>
+                <tr><td><b>Estátice</b><small>manojo · desde marzo</small></td><td class="num hl">$50</td><td class="num">$40</td></tr>
+                <tr><td><b>Caja mixta</b><small>30 girasoles + 2 alhelí + 2 nube</small></td><td class="num hl">$470</td><td class="num">—</td></tr>
               </tbody>
             </table>
-            <div class="price-foot">Pedido mínimo: 3 paquetes. Precios en pesos mexicanos.</div>
+            <div class="price-foot">Pedido mínimo: girasol 3 paquetes · alhelí, nube y estátice 2 manojos. Precios en pesos mexicanos.</div>
           </div>
           <div class="schedule">
             <div><b>Mié 6 pm</b><span>cierre de apartados</span></div>
@@ -392,7 +447,7 @@
       <div class="ramos-head">
         <div>
           <div class="kicker">Ramos a domicilio</div>
-          <h2>Directo del campo<br>a tu puerta.</h2>
+          <h2>Directo del campo <br>a tu puerta.</h2>
         </div>
         <p class="intro" style="max-width:380px;margin:0">Armados el día del corte sobre papel kraft. Elige tu ramo y lo pedimos por WhatsApp en un mensaje.</p>
       </div>
@@ -422,7 +477,7 @@
           <div class="body">
             <h3>Ramo mixto</h3>
             <div class="price">$220 <small>MXN</small></div>
-            <p>Girasol con nube: el ramo completo de un solo campo.</p>
+            <p>5 girasoles, 4 alhelí y nube: el ramo completo de un solo campo.</p>
             <a class="btn btn-wa" data-wa="Hola, quiero un Ramo mixto ($220). Mi zona es: " data-track="pedido-ramo-mixto" href="#contacto"><svg><use href="#wa"/></svg>Pedir</a>
           </div>
         </article>
@@ -430,9 +485,9 @@
           <div class="ph sub" data-label="Foto: entrega semanal"><img src="img/suscripcion.jpg" alt="Flores frescas cada semana" loading="lazy" onerror="this.remove()"></div>
           <div class="body">
             <h3>Suscripción semanal</h3>
-            <div class="price" style="font-size:24px;line-height:1.25">Flores cada semana</div>
-            <p>Para tu casa, oficina, restaurante o recepción. Te cotizamos según cantidad.</p>
-            <a class="btn btn-wa" data-wa="Hola, me interesa la suscripción semanal de flores. Es para (casa / oficina / negocio) en: " data-track="pedido-suscripcion" href="#contacto"><svg><use href="#wa"/></svg>Cotizar</a>
+            <div class="price">$180 <small>/ semana</small></div>
+            <p>Un ramo mixto cada semana en tu casa, oficina o negocio. $680 al mes.</p>
+            <a class="btn btn-wa" data-wa="Hola, quiero la suscripción semanal ($180 por semana). Es para (casa / oficina / negocio) en: " data-track="pedido-suscripcion" href="#contacto"><svg><use href="#wa"/></svg>Suscribirme</a>
           </div>
         </article>
       </div>
@@ -442,9 +497,27 @@
       <div class="season">
         <div>
           <h3>14 de febrero: girasol amarillo y rojo</h3>
-          <p>Ramo con tarjeta $300. Pedidos hasta el viernes 5 de febrero; entregamos viernes y sábado.</p>
+          <p>Ramo de 10 con tarjeta, $300. Pedidos hasta el viernes 5 de febrero. También para el 10 de mayo.</p>
         </div>
         <a class="btn" data-wa="Hola, quiero apartar un ramo con tarjeta para el 14 de febrero ($300). Mi zona es: " data-track="pedido-14-febrero" href="#contacto">Apartar mi ramo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTOS -->
+  <section class="eventos" id="eventos">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <div class="kicker">Bodas · XV años · Empresas</div>
+          <h2>Flor para tu evento, cortada para ese día.</h2>
+          <div class="facts">
+            <div><b>$12</b><span>por vara de girasol</span></div>
+            <div><b>100</b><span>varas mínimo</span></div>
+            <div><b>3 semanas</b><span>de aviso para apartar</span></div>
+          </div>
+        </div>
+        <a class="btn btn-wa" data-wa="Hola, quiero cotizar flor para un evento. Tipo de evento: ____. Fecha: ____. Varas aproximadas: ____." data-track="pedido-evento" href="#contacto"><svg><use href="#wa"/></svg>Cotizar mi evento</a>
       </div>
     </div>
   </section>
@@ -452,13 +525,14 @@
   <!-- 4 · TEMPORADA (mejora: calendario de cosecha) -->
   <section id="temporada">
     <div class="wrap">
-      <div class="kicker">Temporada 2027</div>
+      <div class="kicker">Temporada noviembre 2026 – junio 2027</div>
       <h2>Qué hay en el campo y cuándo.</h2>
       <p class="intro">Cultivamos por surcos escalonados para tener flor cada semana. Así puedes planear tus pedidos con tiempo.</p>
       <div class="timeline">
         <div class="step"><div class="date">Desde 29 de enero</div><h3>Girasol sin polen</h3><p>Primer corte. Después, flor cada semana.</p></div>
         <div class="step"><div class="date">Desde 5 de febrero</div><h3>Nube</h3><p>Justo a tiempo para los ramos del 14 de febrero.</p></div>
         <div class="step"><div class="date">Desde 5 de marzo</div><h3>Alhelí</h3><p>Aroma intenso, ideal para arreglos y eventos.</p></div>
+        <div class="step"><div class="date">Desde marzo</div><h3>Estátice</h3><p>Color que dura y completa el ramo.</p></div>
       </div>
     </div>
   </section>
@@ -467,13 +541,13 @@
   <section class="campo" id="campo">
     <div class="wrap">
       <div class="kicker">El campo</div>
-      <h2>Sembramos en Tonalá, Jalisco.</h2>
-      <p class="intro">Somos Prisma Flowers, productores de flor de corte. Cada planta empieza en charola, se trasplanta a mano y se corta el mismo día que llega a ti.</p>
+      <h2>Rancho El Diamante, Tonalá.</h2>
+      <p class="intro">Somos Prisma Flowers, productores de flor de corte en Tonalá, Jalisco. Cada planta empieza en charola, se trasplanta a mano y se corta el mismo día que llega a ti.</p>
       <div class="gallery">
-        <div class="ph" data-label="Foto: campo al amanecer"><img src="img/campo-1.jpg" alt="Campo de girasoles de Prisma Flowers en Tonalá al amanecer" loading="lazy" onerror="this.remove()"></div>
-        <div class="ph" data-label="Foto: charolas"><img src="img/campo-2.jpg" alt="Charolas de plántulas de alhelí y nube" loading="lazy" onerror="this.remove()"></div>
-        <div class="ph" data-label="Foto: manos cortando"><img src="img/campo-3.jpg" alt="Corte de girasol a mano" loading="lazy" onerror="this.remove()"></div>
-        <div class="ph" data-label="Foto: cubetas del corte"><img src="img/campo-4.jpg" alt="Cubetas con girasoles recién cortados" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-label="Foto: campo al amanecer"><img src="img/campo-1.jpg" alt="Surcos de girasol sin polen en Rancho El Diamante, Tonalá" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-label="Foto: charolas"><img src="img/campo-2.jpg" alt="Girasol abierto en el campo de Prisma Flowers" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-label="Foto: manos cortando"><img src="img/campo-3.jpg" alt="Girasoles al atardecer en Tonalá, Jalisco" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-label="Foto: cubetas del corte"><img src="img/campo-4.jpg" alt="Campo de girasol de Prisma Flowers" loading="lazy" onerror="this.remove()"></div>
       </div>
     </div>
   </section>
@@ -488,7 +562,8 @@
         <details><summary>¿A qué zonas entregan?</summary><p>Tonalá, Tlaquepaque y el oriente de Guadalajara. El envío de ramos cuesta $50 y es gratis en pedidos desde $500.</p></details>
         <details><summary>¿Qué días cortan y entregan?</summary><p>Cortamos jueves y viernes y entregamos el mismo día del corte. Puedes apartar tu pedido hasta el miércoles a las 6 pm.</p></details>
         <details><summary>Tengo una florería, ¿puedo probar la flor antes de comprar?</summary><p>Sí. Te llevamos sin costo una muestra de un paquete de 10 girasoles. Pídela por WhatsApp con tu dirección y el día que prefieras.</p></details>
-        <details><summary>¿Cuál es el pedido mínimo de mayoreo?</summary><p>El pedido mínimo de mayoreo es de 3 paquetes.</p></details>
+        <details><summary>¿Cuál es el pedido mínimo de mayoreo?</summary><p>Girasol: 3 paquetes de 10. Alhelí, nube y estátice: 2 manojos. Para eventos: 100 varas con 3 semanas de aviso.</p></details>
+        <details><summary>¿Venden flor para bodas, XV años y eventos?</summary><p>Sí. Girasol a $12 la vara, mínimo 100 varas, con 3 semanas de aviso para apartar el corte.</p></details>
         <details><summary>¿Cómo hago que mis flores duren más?</summary><p>Corta 2 cm del tallo en diagonal al recibirlas y cambia el agua cada 2 días.</p></details>
       </div>
     </div>
@@ -508,7 +583,7 @@
         <li><span>Instagram</span><a href="https://www.instagram.com/prismaflowers/" target="_blank" rel="noopener" data-track="instagram">@prismaflowers</a></li>
         <li><span>Horario</span><b>Lunes a sábado, 8:00 a 18:00</b></li>
         <li><span>Entregas</span><b>Tonalá, Tlaquepaque y oriente de Guadalajara</b></li>
-        <li><span>Campo</span><b>Tonalá, Jalisco</b></li>
+        <li><span>Campo</span><b>Rancho El Diamante, Tonalá, Jalisco</b></li>
       </ul>
     </div>
   </section>
@@ -531,6 +606,16 @@
      Mientras esté vacío, los botones llevan a la sección de Contacto.
      ============================================================ */
   var WHATSAPP = "523320794799";
+
+  var form = document.getElementById("form-floreria");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = form.elements;
+    var msg = "Hola Prisma Flowers, soy " + f.nombre.value + " de la florería " + f.negocio.value +
+      " (" + f.zona.value + "). Me interesa: " + f.interes.value + "." +
+      (f.cantidad.value ? " Vendo aprox. " + f.cantidad.value + " paquetes de girasol por semana." : "");
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+  });
 
   if (WHATSAPP) {
     document.querySelectorAll("[data-wa]").forEach(function (a) {
